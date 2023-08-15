@@ -5,6 +5,11 @@ const port = 5500;
 const jwt = require('jsonwebtoken');
 const dotenv = require('dotenv');
 const mainpagejsFile = require('./mainpage_server');
+const crypto = require('crypto');
+
+function getPassword(password, salt) {
+    return crypto.createHmac('sha256', salt).update(password).digest('hex');
+}
 
 dotenv.config({path: './env/secretkey.env'});
 const secretkey = process.env.secretkey
@@ -53,7 +58,7 @@ app.get('/fund', function(req, res){
 
 app.post('/login', function(req, res){
     const userid = req.body.userid;
-    const password = req.body.password;
+    const password = getPassword(req.body.password, userid);
 
     let i = 0;
     while(1){
@@ -62,7 +67,7 @@ app.post('/login', function(req, res){
             break;
         }
         if(information[i].id == userid){
-            connection.query(`select AES_DECRYPT(unhex("password"), "asdf") from userinfo`, function(error, results, field){
+            connection.query(`select AES_DECRYPT(unhex(password), "asdf") from userinfo`, function(error, results, field){
                 console.log(results);
                 if(results[i] == password){
                     token = jwt.sign(
@@ -113,7 +118,7 @@ app.post('/signup', function(req, res){
     let i=0
     while(1){
         if(information[i] == null){
-            connection.query(`insert into userinfo(number, name, id, password, email, phone_number, gender) \ values("${i+1}","${name}","${id}",hex(aes_encrypt("${password1}","asdf")),"${email}","${phone_number}","${gender}")`,function(err, results, fields){
+            connection.query(`insert into userinfo(number, name, id, password, email, phone_number, gender) \ values("${i+1}","${name}","${id}",hex(aes_encrypt("${getPassword(password1, id)}","asdf")),"${email}","${phone_number}","${gender}")`,function(err, results, fields){
                 if(err){
                     console.log(err);
                 }
