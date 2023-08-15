@@ -1,0 +1,203 @@
+<html lang="ko"><head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">  
+  <link href="./images/claplogo_orange.svg" rel="shortcut icon" type="image/x-icon">
+  <title>박수투자</title>
+  <link rel="stylesheet" href="./css/reset.css">
+  <link rel="stylesheet" href="./css/movie.css">
+  <link rel="stylesheet" href="./css/aos.css">
+  <link rel="stylesheet" href="./css/login.css">
+  <link rel="stylesheet" href="https://use.typekit.net/mqq0uoy.css">
+ 
+  <script src="./js/jquery-3.3.1.min.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script src="./js/jquery.carouselTicker.min.js"></script>
+  
+  <script>
+  $(function(){
+      
+  // menu height
+  
+      menuHover(350,120);
+      function menuHover(a,b){
+          $("header nav #headerMenu ul > li").hover(function(){
+              $("header").stop().animate({height:a});
+              $("header #hiddenHeader").addClass("redbg");
+          },function(){
+              $("header").stop().animate({height:b});
+              $("header #hiddenHeader").removeClass("redbg");
+          });
+      }
+      
+  // menu height scroll up down
+  
+      var scrollPosition = $(window).scrollTop(); 
+      var scrollNum = 0;
+      $(window).scroll(function() {
+            var scroll = $(window).scrollTop();
+                
+          if ( scroll > ( scrollPosition + 20 )  && scrollNum == 0 ) {
+                 console.log('scrollDown');
+                 $("header").animate({height:80},300);
+                 menuHover(310,80);
+                 $("header nav").addClass("smallMenu");
+                 $("header nav #headerLogoWrap").addClass("smallMenu");
+                 $("header nav #headerLogoWrap h1").addClass("smallMenu");
+                 $("header nav #login").addClass("smallMenu");
+                 scrollNum = 1;
+          } else if ( scroll <  ( scrollPosition - 20 )  && scrollNum == 1 ) {
+                 console.log('scrollUp');
+                 $("header").animate({height:120},500);
+                 menuHover(350,120);
+                 $("header nav").removeClass("smallMenu");
+                 $("header nav #headerLogoWrap").removeClass("smallMenu");
+                 $("header nav #headerLogoWrap h1").removeClass("smallMenu");
+                 $("header nav #login").removeClass("smallMenu");
+                 scrollNum = 0;
+          }
+          scrollPosition = scroll;
+      });
+  
+  // menu background
+  
+      $("header nav #headerMenu ul > li").eq(0).mouseenter(function(){
+          $("header #hHeaderbg:not(animated)").stop(true,true).animate({marginLeft:0});
+      });
+      $("header nav #headerMenu ul > li").eq(1).mouseenter(function(){
+          $("header #hHeaderbg:not(animated)").stop(true,true).animate({marginLeft:"25%"});
+      });
+      $("header nav #headerMenu ul > li").eq(2).mouseenter(function(){
+          $("header #hHeaderbg:not(animated)").stop(true,true).animate({marginLeft:"50%"});
+      });
+      $("header nav #headerMenu ul > li").eq(3).mouseenter(function(){
+          $("header #hHeaderbg:not(animated)").stop(true,true).animate({marginLeft:"75%"});
+      });
+  
+      $("#body01 ol li").eq(0).addClass("pagerClick"); 
+    });  
+
+      </script>
+    </head>
+
+
+
+      <body data-aos-easing="ease" data-aos-duration="400" data-aos-delay="0">
+        <header style="height: 120px;">
+            <nav class="visualWidth">
+                <div id="headerLogoWrap">
+                    <h1>
+                        <a href="./index">
+                            <img src="./images/claplogo_orange.svg" alt="박수투자바로가기">
+                        </a>
+                    </h1>
+                </div>
+
+
+                <div id="login">
+                 
+                    <ol>
+                        <li><a href="/login">로그인</a></li>
+                        <li><a href="/signup">회원가입</a></li>
+                    </ol>
+                </div>
+                <div id="headerMenu">
+                    <ul>
+                        <li>
+                            <a href="#">공연</a>
+                            <ol>
+                                <li><a href="#">전체 공연</a></li>
+                                <li><a href="#">연극</a></li>
+                                <li><a href="#">뮤지컬</a></li>
+                                <li><a href="#">클래식</a></li>
+                                <li><a href="#">국악</a></li>
+                                <li><a href="#">무용</a></li>
+                                <li><a href="#">서커스/마술</a></li>
+                                <li><a href="#">복합</a></li>
+                                
+                            </ol>
+                        </li>
+                        <li>
+                          <a href="#">펀딩</a>
+                          <ol>
+                              <li><a href="#">펀딩 진행현황</a></li>
+                              <li><a href="#">펀딩 신청서</a></li>
+                          </ol>
+                      </li>
+                      <li>
+                          <a href="#">스토어</a>
+                          <ol>
+                              <li><a href="#">펀딩굿즈</a></li>
+                              <li><a href="#">펀딩티켓</a></li>
+                          </ol>
+                      </li>
+                      <li>
+                          <a href="#">이벤트</a>
+                          <ol>
+                              <li><a href="#">진행 중인 이벤트</a></li>
+                              <li><a href="#">지난 이벤트</a></li>
+                 
+
+                          </ol>
+                        </li>
+                    </ul>
+                    <div id="quickReserve">
+                        <a href="#">
+                            <img src="./images/ticket.png" alt="빠른펀딩">
+                            <img src="./images/ticketwhite.png" alt="빠른펀딩">
+                            <span>펀딩추천</span>
+                        </a>
+                    </div>
+                </div>
+            </nav>
+  </header>
+
+
+
+  <body class="align">
+
+    <div class="grid">
+  
+      <form action="/login" method="POST" class="form login">
+
+        <p style="font-size: 25px;">로그인 후 이용해주세요!</style></p>
+  
+        <div class="form__field">
+          <label for="login__username"><svg class="icon">
+              <use xlink:href="#icon-user"></use>
+            </svg><span class="hidden">Username</span></label>
+          <input autocomplete="username" id="login__username" type="text" name="userid" class="form__input" placeholder="id" required>
+        </div>
+  
+        <div class="form__field">
+          <label for="login__password"><svg class="icon">
+              <use xlink:href="#icon-lock"></use>
+            </svg><span class="hidden">Password</span></label>
+          <input id="login__password" type="password" name="password" class="form__input" placeholder="Password" required>
+        </div>
+  
+        <div class="form__field">
+          <input type="submit" value="Log In">
+        </div>
+  
+      </form>
+  
+      <p class="text--center">회원이 아니신가요? <a href="/signup">회원가입하러 가기</a> <svg class="icon">
+          <use xlink:href="#icon-arrow-right"></use>
+        </svg></p>
+  
+    </div>
+  
+    <svg xmlns="http://www.w3.org/2000/svg" class="icons">
+      <symbol id="icon-arrow-right" viewBox="0 0 1792 1792">
+        <path d="M1600 960q0 54-37 91l-651 651q-39 37-91 37-51 0-90-37l-75-75q-38-38-38-91t38-91l293-293H245q-52 0-84.5-37.5T128 1024V896q0-53 32.5-90.5T245 768h704L656 474q-38-36-38-90t38-90l75-75q38-38 90-38 53 0 91 38l651 651q37 35 37 90z" />
+      </symbol>
+      <symbol id="icon-lock" viewBox="0 0 1792 1792">
+        <path d="M640 768h512V576q0-106-75-181t-181-75-181 75-75 181v192zm832 96v576q0 40-28 68t-68 28H416q-40 0-68-28t-28-68V864q0-40 28-68t68-28h32V576q0-184 132-316t316-132 316 132 132 316v192h32q40 0 68 28t28 68z" />
+      </symbol>
+      <symbol id="icon-user" viewBox="0 0 1792 1792">
+        <path d="M1600 1405q0 120-73 189.5t-194 69.5H459q-121 0-194-69.5T192 1405q0-53 3.5-103.5t14-109T236 1084t43-97.5 62-81 85.5-53.5T538 832q9 0 42 21.5t74.5 48 108 48T896 971t133.5-21.5 108-48 74.5-48 42-21.5q61 0 111.5 20t85.5 53.5 62 81 43 97.5 26.5 108.5 14 109 3.5 103.5zm-320-893q0 159-112.5 271.5T896 896 624.5 783.5 512 512t112.5-271.5T896 128t271.5 112.5T1280 512z" />
+      </symbol>
+    </svg>
+  
+  </body>

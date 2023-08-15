@@ -1,0 +1,249 @@
+<html lang="ko"><head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">  
+    <link href="./images/claplogo_orange.svg" rel="shortcut icon" type="image/x-icon">
+    <title>박수투자</title>
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./css/movie.css">
+    <link rel="stylesheet" href="./css/aos.css">
+    <link rel="stylesheet" href="./css/fund.css">
+
+   
+    <script src="./js/jquery-3.3.1.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="./js/jquery.carouselTicker.min.js"></script>
+    
+    <script>
+    $(function(){
+        
+    // menu height
+    
+        menuHover(350,120);
+        function menuHover(a,b){
+            $("header nav #headerMenu ul > li").hover(function(){
+                $("header").stop().animate({height:a});
+                $("header #hiddenHeader").addClass("redbg");
+            },function(){
+                $("header").stop().animate({height:b});
+                $("header #hiddenHeader").removeClass("redbg");
+            });
+        }
+        
+    // menu height scroll up down
+    
+        var scrollPosition = $(window).scrollTop(); 
+        var scrollNum = 0;
+        $(window).scroll(function() {
+              var scroll = $(window).scrollTop();
+                  
+            if ( scroll > ( scrollPosition + 20 )  && scrollNum == 0 ) {
+                   console.log('scrollDown');
+                   $("header").animate({height:80},300);
+                   menuHover(310,80);
+                   $("header nav").addClass("smallMenu");
+                   $("header nav #headerLogoWrap").addClass("smallMenu");
+                   $("header nav #headerLogoWrap h1").addClass("smallMenu");
+                   $("header nav #login").addClass("smallMenu");
+                   scrollNum = 1;
+            } else if ( scroll <  ( scrollPosition - 20 )  && scrollNum == 1 ) {
+                   console.log('scrollUp');
+                   $("header").animate({height:120},500);
+                   menuHover(350,120);
+                   $("header nav").removeClass("smallMenu");
+                   $("header nav #headerLogoWrap").removeClass("smallMenu");
+                   $("header nav #headerLogoWrap h1").removeClass("smallMenu");
+                   $("header nav #login").removeClass("smallMenu");
+                   scrollNum = 0;
+            }
+            scrollPosition = scroll;
+        });
+    
+    // menu background
+    
+        $("header nav #headerMenu ul > li").eq(0).mouseenter(function(){
+            $("header #hHeaderbg:not(animated)").stop(true,true).animate({marginLeft:0});
+        });
+        $("header nav #headerMenu ul > li").eq(1).mouseenter(function(){
+            $("header #hHeaderbg:not(animated)").stop(true,true).animate({marginLeft:"25%"});
+        });
+        $("header nav #headerMenu ul > li").eq(2).mouseenter(function(){
+            $("header #hHeaderbg:not(animated)").stop(true,true).animate({marginLeft:"50%"});
+        });
+        $("header nav #headerMenu ul > li").eq(3).mouseenter(function(){
+            $("header #hHeaderbg:not(animated)").stop(true,true).animate({marginLeft:"75%"});
+        });
+    
+        $("#body01 ol li").eq(0).addClass("pagerClick"); 
+      });  
+  
+        </script>
+      </head>
+  
+  
+  
+        <body data-aos-easing="ease" data-aos-duration="400" data-aos-delay="0">
+          <header style="height: 120px;">
+              <nav class="visualWidth">
+                  <div id="headerLogoWrap">
+                      <h1>
+                          <a href="../index.html">
+                            <circle src="./images/claplogo_orange.svg" alt="박수투자바로가기"></circle>
+                              
+                          </a>
+                      </h1>
+                  </div>
+  
+                      
+                  </div>
+                  <div id="headerMenu">
+                      <ul>
+                          <li>
+                              <a href="#">공연</a>
+                              <ol>
+                                  <li><a href="#">전체 공연</a></li>
+                                  <li><a href="#">연극</a></li>
+                                  <li><a href="#">뮤지컬</a></li>
+                                  <li><a href="#">클래식</a></li>
+                                  <li><a href="#">국악</a></li>
+                                  <li><a href="#">무용</a></li>
+                                  <li><a href="#">서커스/마술</a></li>
+                                  <li><a href="#">복합</a></li>
+                                  
+                              </ol>
+                          </li>
+                          <li>
+                            <a href="#">펀딩</a>
+                            <ol>
+                                <li><a href="#">펀딩 진행현황</a></li>
+                                <li><a href="#">펀딩 신청서</a></li>
+                            </ol>
+                        </li>
+                        <li>
+                            <a href="#">스토어</a>
+                            <ol>
+                                <li><a href="#">펀딩굿즈</a></li>
+                                <li><a href="#">펀딩티켓</a></li>
+                            </ol>
+                        </li>
+                        <li>
+                            <a href="#">이벤트</a>
+                            <ol>
+                                <li><a href="#">진행 중인 이벤트</a></li>
+                                <li><a href="#">지난 이벤트</a></li>
+                   
+
+                            </ol>
+                          </li>
+                      </ul>
+                      <div id="quickReserve">
+                          <a href="#">
+                              <img src="./images/ticket.png" alt="빠른펀딩">
+                              <img src="./images/ticketwhite.png" alt="빠른펀딩">
+                              <span>펀딩추천</span>
+                          </a>
+                      </div>
+                  </div>
+              </nav>
+    </header>
+    
+    
+    
+    <body 10>
+        <div class="col-md-6 offset-md-3 mt-5">
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<style>
+    h2{
+        font-size: 60px;
+        margin-top: 90px;
+        margin-bottom: 90px;
+        color: white;
+        text-align: center;
+    }
+    form{text-align: center;
+         color:white}
+
+         
+    @font-face {
+    font-family: 'GoyangIlsan L';
+    src: url('../font/GoyangIlsanL/GoyangIlsanL.eot');
+    src: url('../font/GoyangIlsanL/GoyangIlsanL.eot?#iefix') format('embedded-opentype'),
+         url('../font/GoyangIlsanL/GoyangIlsanL.woff2') format('woff2'),
+         url('../font/GoyangIlsanL/GoyangIlsanL.woff') format('woff'),
+         url('../font/GoyangIlsanL/GoyangIlsanL.ttf')  format('truetype'),
+         url('../font/GoyangIlsanL/GoyangIlsanL.svg#GoyangIlsan L') format('svg');
+
+}
+
+label{
+	display: inline-block; /* label 태그는 inline 태그이므로 width, height, margin 상하가 적용되지 않으므로 inline-block 속성으로 변경해주는 것이 우선이다!*/
+    width: 60px;
+    text-align: right;
+    font-family: 'GoyangIlsan L';
+}
+    </style>
+          <h2>펀딩 신청서</h2>
+
+          <form accept-charset="UTF-8" action="https://getform.io/f/{your-form-endpoint-goes-here}" method="POST" enctype="multipart/form-data" target="_blank">
+            <div class="form-group">
+              <label for="exampleInputName" style="font-size: 20;">제목</label>
+              <input type="text" name="fullname" class="form-control" id="exampleInputName" placeholder=" 공연의 제목을 입력하세요" required="required" style="border: none; width: 500; height:30;">
+            </div><br>
+            <div class="form-group">
+              <label for="exampleInputEmail1" required="required" style="font-size: 20;">이메일</label>
+              <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder=" youremail@example.com" style="border:none; width:500; height:30;">
+            </div><br>
+            <div class="form-group">
+              <label for="inputAddress"style="font-size: 20;">전화</label>
+              <input type="text" name="address" class="form-control" id="inputAddress" placeholder=" 담당자의 전화번호를 입력하세요." style="border:none; width:500; height:30;">
+            </div><br>
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label for="pet-select" style="font-size: 20;">장르</label>
+                    <select name="pets" id="pet-select" style="width:500;height:30;">
+                    <option value="">장르를 선택해주세요</option>
+                    <option value="dog">연극</option>
+                    <option value="cat">뮤지컬</option>
+                    <option value="hamster">클래식</option>
+                    <option value="parrot">국악</option>
+                    <option value="spider">서커스/마술</option>
+                    <option value="goldfish">무용</option>
+
+</select>
+              </div><br>
+              <!-- <div class="form-group col-md-2">
+                <label for="inputZip" style="font-size: 20;">Zip</label>
+                <input type="text" name="zip" class="form-control" id="inputZip" placeholder="34000" style="border:none; width:500; height:30;">
+              </div> -->
+       
+           
+            <!-- <div class="form-group">
+              <label for="example-date-input" class="col-3 col-form-label" style="font-size: 20;">펀딩 일자</label>
+              <div class="col-10">
+                <input class="form-control" name="starting_date" type="date" value="2020-02-01" id="example-date-input" style="border:none; width:250; height:30;"">
+              </div>
+            </div><br> -->
+
+            
+            <div class="form-group mt-3">
+              <label class="mr-4"  style="font-size: 20;">신청서 </label>
+              <input type="file" name="file" style="border:none; width:500; height:30;">
+            </div><br>
+            <button type="submit" class="btn btn-primary" style="border:none; height:30px; width:70; background-color: #ff2400; font-family: 'GoyangIlsan L';"><b>Submit</b></button>
+          </form>
+        </div>  
+      </body 10>
+        </html>  
+
+
+<!-- 
+        <button class="button-24" role="button">Button 24</button> 
+        {   background: #FF4742;   border: 1px solid #FF4742;   border-radius: 6px;   box-shadow: rgba(0, 0, 0, 0.1) 1px 2px 4px;   box-sizing: border-box;   color: #FFFFFF;   cursor: pointer;   display: inline-block;   font-family: nunito,roboto,proxima-nova,"proxima nova",sans-serif;   font-size: 16px;   font-weight: 800;   line-height: 16px;   min-height: 40px;   outline: 0;   padding: 12px 14px;   text-align: center;   text-rendering: geometricprecision;   text-transform: none;   user-select: none;   -webkit-user-select: none;   touch-action: manipulation;   vertical-align: middle; }  .button-24:hover, .button-24:active {   background-color: initial;   background-position: 0 0;   color: #FF4742; }  .button-24:active {   opacity: .5; } -->

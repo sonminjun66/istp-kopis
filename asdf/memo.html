@@ -1,0 +1,172 @@
+<script>
+
+$(function(){    
+// 영화 차트 버튼
+    
+$("#body02-2 #movieChart2 ul li").eq(0).click(function(){
+    $("#body02-2 #movieChart2 #movieChartbg-2").removeClass("preMovie2");
+    $("#body02-2 #movieChart2 #movieChartbg-2").removeClass("arthouse2");
+    $("#body02-2 #movieChart2 ul li").css({color:"white"});
+    $(this).css({color:"white"});
+});
+$("#body02-2 #movieChart2 ul li").eq(1).click(function(){
+    $("#body02-2 #movieChart2 #movieChartbg-2").addClass("preMovie2");
+    $("#body02-2 #movieChart2 #movieChartbg-2").removeClass("arthouse2");
+    $("#body02-2 #movieChart2 ul li").css({color:"white"});
+    $(this).css({color:"white"});
+    });
+$("#body02-2 #movieChart2 ul li").eq(2).click(function(){
+    $("#body02-2 #movieChart2 #movieChartbg-2").removeClass("preMovie2");
+    $("#body02-2 #movieChart2 #movieChartbg-2").addClass("arthouse2");
+    $("#body02-2 #movieChart2 ul li").css({color:"white"});
+    $(this).css({color:"white"});
+});     
+
+// 영화 차트 객체로 불러오기 
+
+var movie2 = { 
+    moveChart2: [ 
+        { num:1, poster:'./images/movie01.jpg', ticket:19.8, view:'5,989', title:'샤잠!',start:'2019.04.03',text:'첫번째순위'},
+        { num:2, poster:'./images/movie02.jpg', ticket:13.6, view:'3,714', title:'생일',start:'2019.04.03',text:'두번째순위'},
+        { num:3, poster:'./images/movie03.jpg', ticket:7.5, view:'10,633', title:'돈',start:'2019.03.20',text:'세번째순위'},
+        { num:4, poster:'./images/movie04.jpg', ticket:7.4, view:'33,483', title:'어스',start:'2019.03.27',text:'네번째순위'},
+        { num:5, poster:'./images/movie05.jpg', ticket:6.2, view:'4,228', title:'콜레트',start:'2019.03.27',text:'다섯번째순위'},
+        { num:6, poster:'./images/movie06.jpg', ticket:5.4, view:'6,269', title:'장난스런 키스',start:'2019.03.27',text:'여섯번째순위'},
+        { num:7, poster:'./images/movie07.jpg', ticket:3.9, view:'21,941', title:'캡틴마블',start:'2019.03.06',text:'일곱번째순위'},
+        { num:8, poster:'./images/movie08.jpg', ticket:3.1, view:'1,656', title:'로망',start:'2019.04.03',text:'여덟번째순위'}
+    ],
+    soonChart2: [
+        { num:'d-1', poster:'./images/movie09.jpg', ticket:9.0, view:'3,248', title:'헬보이',start:'2019.04.10',text:'첫번째순위'},
+        { num:'d-1', poster:'./images/movie10.jpg', ticket:6.7, view:'2,258', title:'파이브 피트',start:'2019.04.10',text:'두번째순위'},
+        { num:'d-1', poster:'./images/movie11.jpg', ticket:3.9, view:'17,871', title:'공포의 묘지',start:'2019.04.10',text:'세번째순위'},
+        { num:'d-1', poster:'./images/movie12.jpg', ticket:0.0, view:'61', title:'키코리키',start:'2019.04.10',text:'네번째순위'},
+        { num:'d-2', poster:'./images/movie13.jpg', ticket:14.4, view:'5,123', title:'바이스',start:'2019.04.11',text:'다섯번째순위'},
+        { num:'d-2', poster:'./images/movie14.jpg', ticket:2.8, view:'2,382', title:'미성년',start:'2019.04.11',text:'여섯번째순위'},
+        { num:'d-2', poster:'./images/movie15.jpg', ticket:0.5, view:'1,539', title:'퍼스트 리폼드',start:'2019.04.11',text:'일곱번째순위'},
+        { num:'d-2', poster:'./images/movie16.jpg', ticket:0.4, view:'2,735', title:'유럽미술관 산책',start:'2019.04.11',text:'여덟번째순위'}
+    ],
+    artHouse22: [
+        { num:1, poster:'./images/movie05.jpg', ticket:60.0, view:'4,247', title:'콜레트!',start:'2019.03.07',text:'첫번째순위'},
+        { num:2, poster:'./images/movie18.jpg', ticket:7.5, view:'1,408', title:'루스 베이더 긴즈버그',start:'2019.03.28',text:'두번째순위'},
+        { num:3, poster:'./images/movie19.jpg', ticket:2.2, view:'5,827', title:'불한당 - 나쁜 놈들의 세상',start:'2017.05.17',text:'세번째순위'},
+        { num:4, poster:'./images/movie20.jpg', ticket:1.7, view:'5,703', title:'더 페이버릿',start:'2019.02.21',text:'네번째순위'},
+        { num:5, poster:'./images/movie21.jpg', ticket:1.6, view:'333', title:'강변호텔',start:'2019.03.27',text:'다섯번째순위'},
+        { num:6, poster:'./images/movie22.jpg', ticket:0.3, view:'493', title:'선희와 슬기',start:'2019.03.27',text:'여섯번째순위'},
+        { num:7, poster:'./images/movie23.jpg', ticket:0.2, view:'1,725', title:'유전',start:'2018.06.07',text:'일곱번째순위'},
+        { num:8, poster:'./images/movie24.jpg', ticket:0.2, view:'757', title:'영웅본색',start:'2016.02.17',text:'여덟번째순위'}
+    ]}
+
+var part2 = movie.moveChart2;
+
+$("#movieChart2 ul li").click(function(){
+    var chkIndex1 = $(this).index();
+    switch(chkIndex1) {
+        case 0:
+            part = movie.moveChart2;
+            moveList1();
+            break;
+        case 1:
+            part = movie.soonChart2;
+            moveList1('ddate');
+            break;
+        case 2:   
+            part = movie.artHouse22;
+            moveList1();
+            break;                            
+    }
+});
+
+  moveList1();
+
+  function moveList1(ddate) {
+    var html = "";
+    for( var i = 0; i < 8; i++) {
+          if ( i == 3 ) {      
+            html += "<li class='noMargin " + ddate +"'>";
+          } else {
+            html += "<li class='" + ddate + "'>";
+          }
+
+          html += "<div class='rankNum2'>";
+          if ( i == 0 ) {
+            html += "<img src='../images/MegaCorner.png' alt='첫번째 순위''/>";
+          } else {
+            html += "<img src='./images/whiteCorner.svg' alt='첫번째 순위''/>";
+          }
+          html += "<span>"+ part2[i].num +"</span>";
+          html += "</div>";      
+          html += "<a href='#''><img src='"+ part2[i].poster +"' alt='"+ part2[i].text + "'/></a>";      
+          html += "<dl><dt>예매율 "+ part2[i].ticket +"&#37</dt><dt>" + part2[i].view + "</dt>";
+          html += "<dd>"+ part2[i].title +"</dd><dt>"+ part2[i].start+" 개봉</dt>";
+          html += "<a href='#''>예매</a>";
+          html += "</dl></li>";
+    }
+    $("#movieList2 ol").html(html); 
+  }
+
+// 영화 차트 height값 받아오기 
+
+  setTimeout(function(){
+    thumHeight1 = $("#body02-2 #movieBody-1 #movieList2 ol li").height(); 
+     $("#movieList2 ol").css({height:thumHeight1+20});
+  },300);
+
+// 영화 차트 height값 지정
+
+  var sizeUp1 = 0;
+  $(window).resize(function(){
+
+      thumHeight1= $("#body02-2 #movieBody-1 #movieList2 ol li").height(); 
+      if ( sizeUp1 == 0 ) { 
+        $("#movieList2 ol").css({height:thumHeight1+20});
+      } else {
+        $("#movieList2 ol").css({height:thumHeight1*2+120});
+      }
+  });
+
+// 영화 차트 moremovie 버튼 
+
+  var moreBtn1 = 0; 
+
+  $("#body02-2 #moreMovie1").click(function(){
+    if ( moreBtn1 == 0 ) { 
+          $("#movieList2 ol").animate({height:thumHeight1*2+120},500);
+          $("#body02-2 #moreMovie1 span").eq(0).animate({opacity:0},200);
+          sizeUp1 = 1;
+          moreBtn1 = 1; 
+    } else { 
+          $("#movieList2 ol").animate({height:thumHeight1+20},500);
+          $("#body02-2 #moreMovie1 span").eq(0).animate({opacity:1},200);
+          sizeUp1 = 0;
+          moreBtn1 = 0;
+        }
+  });  
+  
+});
+</script>
+
+<div id="body02-2" class="visualWidth-1">
+    <h2>MOVIE2</h2>
+    <div id="movieChartWrap-1">
+        <div id="movieChart-1">
+            <div id="movieChartbg-2"></div>
+            <ul>
+                <li>무비 차트</li>
+                <li>상영 예정작</li>
+                <li>CGV 아트하우스</li>
+            </ul>
+        </div>
+    </div>
+    <div id="movieBody-1">
+        <div id="movieList2">
+                 <ol style="height: 420.594px;"><li class="undefined"><div class="rankNum2"><img src="./images/MegaCorner.png" alt="첫번째 순위" '=""><span>1</span></div><a href="#" '=""><img src="./images/movie01.jpg" alt="첫번째순위"></a><dl><dt>예매율 19.8%</dt><dt>5,989</dt><dd>미션 임파서블</dd><dt>2023.07.12 개봉</dt><a href="#" '="">예매</a></dl></li><li class="undefined"><div class="rankNum2"><img src="./images/MegaCorner.png" alt="첫번째 순위" '=""><span>2</span></div><a href="#" '=""><img src="./images/movie02.jpg" alt="두번째순위"></a><dl><dt>예매율 13.6%</dt><dt>3,714</dt><dd>생일</dd><dt>2023.07.06 개봉</dt><a href="#" '="">예매</a></dl></li><li class="undefined"><div class="rankNum2"><img src="./images/MegaCorner.png" alt="첫번째 순위" '=""><span>3</span></div><a href="#" '=""><img src="./images/movie03.jpg" alt="세번째순위"></a><dl><dt>예매율 7.5%</dt><dt>10,633</dt><dd>돈</dd><dt>2023.06.20 개봉</dt><a href="#" '="">예매</a></dl></li><li class="noMargin undefined"><div class="rankNum2"><img src="./images/MegaCorner.png" alt="첫번째 순위" '=""><span>4</span></div><a href="#" '=""><img src="./images/movie07.jpg" alt="네번째순위"></a><dl><dt>예매율 7.4%</dt><dt>33,483</dt><dd>어스</dd><dt>2023.06.27 개봉</dt><a href="#" '="">예매</a></dl></li><li class="undefined"><div class="rankNum2"><img src="./images/MegaCorner.png" alt="첫번째 순위" '=""><span>5</span></div><a href="#" '=""><img src="./images/movie05.jpg" alt="다섯번째순위"></a><dl><dt>예매율 6.2%</dt><dt>4,228</dt><dd>콜레트</dd><dt>2023.06.27 개봉</dt><a href="#" '="">예매</a></dl></li><li class="undefined"><div class="rankNum2"><img src="img/MEGABOX/whiteCorner.svg" alt="첫번째 순위" '=""><span>6</span></div><a href="#" '=""><img src="./images/movie06.jpg" alt="여섯번째순위"></a><dl><dt>예매율 5.4%</dt><dt>6,269</dt><dd>장난스런 키스</dd><dt>2023.06.27 개봉</dt><a href="#" '="">예매</a></dl></li><li class="undefined"><div class="rankNum2"><img src="img/MEGABOX/whiteCorner.svg" alt="첫번째 순위" '=""><span>7</span></div><a href="#" '=""><img src="./images/movie07.jpg" alt="일곱번째순위"></a><dl><dt>예매율 3.9%</dt><dt>21,941</dt><dd>범죄도시3</dd><dt>2023.06.06 개봉</dt><a href="#" '="">예매</a></dl></li><li class="undefined"><div class="rankNum2"><img src="img/MEGABOX/whiteCorner.svg" alt="첫번째 순위" '=""><span>8</span></div><a href="#" '=""><img src="./images/movie08.jpg" alt="여덟번째순위"></a><dl><dt>예매율 3.1%</dt><dt>1,656</dt><dd>귀공자</dd><dt>2023.07.06 개봉</dt><a href="#" '="">예매</a></dl></li></ol>
+        </div>
+    </div>
+    <div id="moreMovie-1">
+        <span></span>
+        <span></span>
+    </div>
+    <div id="moreMovieScroll">
+        <img src="./scrollDown.svg" alt="옆으로 스크롤 하세요">
+    </div>
+</div>
